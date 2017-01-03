@@ -49,9 +49,7 @@ var ModifyComponent = (function () {
     ModifyComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params
-            .switchMap(function (params) {
-            return _this.resumeService.getResume(params['userid']);
-        })
+            .switchMap(function (params) { return _this.resumeService.getResume(params['userid']); })
             .subscribe(function (resume) { return _this.resume = resume; });
     };
     ModifyComponent.prototype.save = function () {

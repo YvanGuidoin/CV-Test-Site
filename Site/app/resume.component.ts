@@ -26,7 +26,7 @@ export class ResumeComponent implements OnInit {
      return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
-  printGender(gender: String): String {
+  printGender(gender: string): string {
     return (gender == "M") ? ", Male" : (gender == "M") ? ", Female" : "";
   }
 

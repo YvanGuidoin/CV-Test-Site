@@ -12,8 +12,8 @@ import { Credentials } from './resume';
 export class RegisterDialog {
 
   data: Credentials = new Credentials();
-  passwordDouble: String = "";
-  usernameTaken: Boolean = false;
+  passwordDouble: string = "";
+  usernameTaken: boolean = false;
 
   constructor(
     public dialogRef: MdDialogRef<RegisterDialog>,

@@ -4,13 +4,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'keywords',
   templateUrl : 'templates/keywords.component.html'
 })
-export class KeywordsComponent {
-  @Input() keywords: String[];
+export class KeywordsComponent{
+  @Input() keywords: string[];
   @Input() editable: boolean = false;
-  @Output() modify: EventEmitter<String[]> = new EventEmitter<String[]>();
-  newKeyword: String = "";
+  @Output() modify: EventEmitter<string[]> = new EventEmitter<string[]>();
+  newKeyword: string = "";
 
-  deleteKeywork(keyword: String) : void {
+  deleteKeywork(keyword: string) : void {
     let index = this.keywords.indexOf(keyword);
     if(index != -1) this.keywords.splice(index, 1);
     this.modify.emit(this.keywords);

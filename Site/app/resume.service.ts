@@ -18,14 +18,14 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
-  getResume(userid: String): Promise<Resume> {
+  getResume(userid: string): Promise<Resume> {
     return this.http.get(this.baseUrl + "users/" + userid)
       .toPromise()
       .then(response => response.json() as Resume)
       .catch(this.handleError);
   }
 
-  login(username: String, password: String): Promise<Credentials> {
+  login(username: string, password: string): Promise<Credentials> {
     return this.http.post(this.baseUrl + "login", { username, password })
       .toPromise()
       .then(response => response.json() as Credentials)
@@ -46,7 +46,7 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
-  sendModif(userid: String, resume: Resume): Promise<any> {
+  sendModif(userid: string, resume: Resume): Promise<any> {
     return this.http.put(this.baseUrl + "users/" + userid, resume)
       .toPromise()
       .then(response => response.json())

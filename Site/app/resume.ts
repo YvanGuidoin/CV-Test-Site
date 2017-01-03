@@ -1,36 +1,50 @@
 export class Job {
-  beginning: String;
-  end: String;
-  company: String;
-  job: String;
-  description: String;
-  keywords: String[];
+  beginning: string;
+  end: string;
+  company: string;
+  job: string;
+  description: string;
+  keywords: string[];
+
+  constructor() {
+    this.keywords = [];
+  }
 };
 
 export class Qualification {
-  obtention: String;
-  name: String;
-  location: String;
-  organization: String;
-  description: String;
-  keywords: String[];
+  obtention: string;
+  name: string;
+  location: string;
+  organization: string;
+  description: string;
+  keywords: string[];
+
+  constructor() {
+    this.keywords = [];
+  }
 };
 
 export class Resume {
-  userid: String;
-  name: String;
-  surname: String;
+  userid: string;
+  name: string;
+  surname: string;
   birthdate: Date;
-  gender: String;
-  address: String;
-  presentation: String;
+  gender: string;
+  address: string;
+  presentation: string;
   past_jobs: Job[];
   qualifications: Qualification[];
-  keywords: String[];
+  keywords: string[];
+
+  constructor() {
+    this.qualifications = [];
+    this.past_jobs = [];
+    this.keywords = [];
+  }
 }
 
 export class Credentials {
-  userid: String;
-  username: String;
-  password: String;
+  userid: string;
+  username: string;
+  password: string;
 }

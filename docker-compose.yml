@@ -14,7 +14,10 @@ services:
       - db
     links:
       - db:cassandra-db-alias
+    restart: always
     container_name: cv-site-api
+    environment:
+      DOMAIN: http://localhost:3000
     networks:
     - external
     - internal
@@ -38,17 +41,17 @@ services:
       - db:cassandra-db-master
     environment:
       CASSANDRA_SEEDS: cassandra-db
-  static-files:
-    image: nginx
-    volumes:
-      - ./Site:/usr/share/nginx/html
-    container_name: cv-site-static
-    ports:
-      - 80:80
-    environment:
-      - NGINX_PORT=80
-    networks:
-    - external
+  # static-files:
+  #   image: nginx
+  #   volumes:
+  #     - ./Site:/usr/share/nginx/html
+  #   container_name: cv-site-static
+  #   ports:
+  #     - 80:80
+  #   environment:
+  #     - NGINX_PORT=80
+  #   networks:
+  #   - external
 networks:
   external:
   internal:

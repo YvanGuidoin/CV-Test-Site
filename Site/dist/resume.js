@@ -1,6 +1,7 @@
 "use strict";
 var Job = (function () {
     function Job() {
+        this.keywords = [];
     }
     return Job;
 }());
@@ -8,6 +9,7 @@ exports.Job = Job;
 ;
 var Qualification = (function () {
     function Qualification() {
+        this.keywords = [];
     }
     return Qualification;
 }());
@@ -15,6 +17,9 @@ exports.Qualification = Qualification;
 ;
 var Resume = (function () {
     function Resume() {
+        this.qualifications = [];
+        this.past_jobs = [];
+        this.keywords = [];
     }
     return Resume;
 }());

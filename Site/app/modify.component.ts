@@ -25,7 +25,7 @@ export class ModifyComponent implements OnInit {
     private route: ActivatedRoute
   ){}
 
-  printGender(gender: String): String {
+  printGender(gender: string): string {
     return (gender == "M") ? ", Male" : (gender == "M") ? ", Female" : "";
   }
 
@@ -51,9 +51,7 @@ export class ModifyComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .switchMap((params: Params) => {
-        return this.resumeService.getResume(params['userid']);
-      })
+      .switchMap((params: Params) => this.resumeService.getResume(params['userid']))
       .subscribe((resume: Resume) => this.resume = resume);
   }
 

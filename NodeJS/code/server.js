@@ -75,6 +75,10 @@ app.post('/users', jsonParser, function(req, res) {
 });
 
 app.put('/users/:id', myAuthenticate, jsonParser, function(req, res) {
+    // correct the fromJson('null') from Cassandra
+    if(!req.body.past_jobs) req.body.past_jobs = [];
+    if(!req.body.qualifications) req.body.qualifications = [];
+    if(!req.body.keywords) req.body.keywords = [];
     const query = 'UPDATE users SET name = \'' + req.body.name + '\', '
      + 'surname = \'' + req.body.surname + '\', '
      + 'birthdate = \'' + req.body.birthdate + '\', '
