@@ -6,7 +6,7 @@ const cassandra = require('cassandra-driver');
 
 const client = new cassandra.Client({ contactPoints: ['cassandra-db-alias'], keyspace: 'resumes' })
 
-const DOMAIN = "http://localhost:3000";
+const DOMAIN = process.env.DOMAIN || "http://localhost";
 
 var app = express();
 
@@ -37,7 +37,7 @@ app.post('/login', jsonParser, function(req, res) {
         username: result.rows[0].pseudo,
         password: result.rows[0].password
       };
-      res.cookie('credentials', credentials, { domain: '.app.localhost' }).status(200).json(credentials);
+      res.cookie('credentials', credentials).status(200).json(credentials);
     }
     else res.sendStatus(403);
   });
@@ -46,7 +46,7 @@ app.post('/login', jsonParser, function(req, res) {
 app.post('/logout', function(req, res) {
   console.log("Cookies avant logout:");
   console.log(req.cookies);
-  res.clearCookie('credentials', { domain: '.app.localhost' }).status(200).json({ logout: true });
+  res.clearCookie('credentials').status(200).json({ logout: true });
   console.log("Cookies apres logout:");
   console.log(req.cookies);
 });
