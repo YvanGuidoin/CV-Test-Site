@@ -5,7 +5,7 @@ This is an example site to test Cassandra, with NodeJS and Angular 2 Typescript,
 ## Launch the project
 
 ```Bash
-git clone "this URL"
+git clone https://github.com/YvanGuidoin/CV-Test-Site.git
 cd CVSite
 docker-compose build
 docker-compose up
