@@ -24,6 +24,7 @@ var qualif_component_1 = require("./qualif.component");
 var datepretty_component_1 = require("./datepretty.component");
 var modify_component_1 = require("./modify.component");
 var connect_dialog_component_1 = require("./connect-dialog.component");
+var register_dialog_component_1 = require("./register-dialog.component");
 var resume_service_1 = require("./resume.service");
 var dialogs_service_1 = require("./dialogs.service");
 var routes = [
@@ -32,8 +33,13 @@ var routes = [
         component: about_component_1.AboutComponent
     },
     {
-        path: '',
+        path: 'resume',
         component: base_component_1.BaseComponent
+    },
+    {
+        path: '',
+        redirectTo: 'resume',
+        pathMatch: 'full'
     },
     {
         path: 'resume/:userid',
@@ -60,7 +66,8 @@ AppModule = __decorate([
         ],
         exports: [
             router_1.RouterModule,
-            connect_dialog_component_1.ConnectDialog
+            connect_dialog_component_1.ConnectDialog,
+            register_dialog_component_1.RegisterDialog
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -72,10 +79,12 @@ AppModule = __decorate([
             qualif_component_1.QualificationComponent,
             datepretty_component_1.DatePrettyComponent,
             connect_dialog_component_1.ConnectDialog,
+            register_dialog_component_1.RegisterDialog,
             modify_component_1.ModifyComponent
         ],
         entryComponents: [
-            connect_dialog_component_1.ConnectDialog
+            connect_dialog_component_1.ConnectDialog,
+            register_dialog_component_1.RegisterDialog
         ],
         providers: [
             resume_service_1.ResumeService,

@@ -6,7 +6,7 @@
     </md-chip>
   </md-chip-list>
   <md-input-container *ngIf="editable">
-    <input md-input required [(ngModel)]="newKeyword" name="newKeyword" placeholder="New Keyword">
+    <input md-input [(ngModel)]="newKeyword" name="newKeyword" placeholder="New Keyword">
   </md-input-container>
   <button *ngIf="editable" md-button (click)="addKeyword()">Add</button>
 </div>

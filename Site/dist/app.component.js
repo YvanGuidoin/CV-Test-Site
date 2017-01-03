@@ -18,7 +18,7 @@ var AppComponent = (function () {
         this.viewContainerRef = viewContainerRef;
         this.title = 'CV Site Example';
     }
-    AppComponent.prototype.openDialog = function () {
+    AppComponent.prototype.openConnectDialog = function () {
         var _this = this;
         this.dialogsService
             .connect(this.viewContainerRef)
@@ -27,6 +27,17 @@ var AppComponent = (function () {
                 _this.resumeService.login(data.username, data.password)
                     .then(function (credentials) { return _this.credentials = credentials; })
                     .catch(function (err) { return _this.credentials = null; });
+            }
+        });
+    };
+    AppComponent.prototype.openRegisterDialog = function () {
+        var _this = this;
+        this.dialogsService
+            .register(this.viewContainerRef)
+            .subscribe(function (data) {
+            if (data) {
+                _this.credentials = data;
+                _this.openConnectDialog();
             }
         });
     };

@@ -1,4 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
+
 import { DialogsService } from './dialogs.service';
 import { ResumeService } from './resume.service';
 
@@ -18,7 +19,7 @@ export class AppComponent  {
     private viewContainerRef: ViewContainerRef
   ) {}
 
-  openDialog(): void {
+  openConnectDialog(): void {
     this.dialogsService
      .connect(this.viewContainerRef)
      .subscribe((data) => {
@@ -26,6 +27,17 @@ export class AppComponent  {
          this.resumeService.login(data.username, data.password)
           .then(credentials => this.credentials = credentials)
           .catch(err => this.credentials = null);
+       }
+     });
+  }
+
+  openRegisterDialog(): void {
+    this.dialogsService
+     .register(this.viewContainerRef)
+     .subscribe((data) => {
+       if(data){
+         this.credentials = data;
+         this.openConnectDialog();
        }
      });
   }

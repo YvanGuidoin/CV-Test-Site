@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var connect_dialog_component_1 = require("./connect-dialog.component");
+var register_dialog_component_1 = require("./register-dialog.component");
 var material_1 = require("@angular/material");
 var core_1 = require("@angular/core");
 var DialogsService = (function () {
@@ -20,6 +21,13 @@ var DialogsService = (function () {
         var config = new material_1.MdDialogConfig();
         config.viewContainerRef = viewContainerRef;
         dialogRef = this.dialog.open(connect_dialog_component_1.ConnectDialog, config);
+        return dialogRef.afterClosed();
+    };
+    DialogsService.prototype.register = function (viewContainerRef) {
+        var dialogRef;
+        var config = new material_1.MdDialogConfig();
+        config.viewContainerRef = viewContainerRef;
+        dialogRef = this.dialog.open(register_dialog_component_1.RegisterDialog, config);
         return dialogRef.afterClosed();
     };
     return DialogsService;

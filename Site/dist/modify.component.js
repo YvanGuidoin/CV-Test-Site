@@ -56,7 +56,6 @@ var ModifyComponent = (function () {
     };
     ModifyComponent.prototype.save = function () {
         var _this = this;
-        console.log(JSON.stringify(this.resume));
         this.resumeService.sendModif(this.resume.userid, this.resume)
             .then(function (response) {
             console.log(response);

@@ -54,6 +54,7 @@ app.get('/users', function(req, res) {
 });
 
 app.post('/users', function(req, res) {
+    console.log(req.body);
     res.status(200).end();
 });
 

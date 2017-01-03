@@ -1,0 +1,38 @@
+<!-- <h1 md-dialog-title>Register</h1> -->
+<form (ng-submit)="onSubmit()" #heroForm="ngForm">
+  <md-dialog-content>
+    <table style="width: 100%">
+      <tr>
+        <md-input-container>
+          <input md-input required [(ngModel)]="data.username" name="username" placeholder="Username" #username="ngModel">
+          <md-hint *ngIf="usernameTaken">
+            Username is already taken
+          </md-hint>
+          <md-hint *ngIf="!username.valid">
+            Username is required
+          </md-hint>
+        </md-input-container>
+      </tr>
+      <tr>
+        <md-input-container>
+          <input md-input required [(ngModel)]="passwordDouble" name="password" type="password" placeholder="Password" #password="ngModel">
+          <md-hint *ngIf="!password.valid">
+            Password is required
+          </md-hint>
+        </md-input-container>
+      </tr>
+      <tr>
+        <md-input-container>
+          <input md-input required [(ngModel)]="data.password" name="password" type="password" placeholder="Repeat password" #passwordReal="ngModel">
+          <md-hint *ngIf="!passwordReal.valid || data.password != passwordDouble">
+            Password should be the same in the two fields
+          </md-hint>
+        </md-input-container>
+      </tr>
+    </table>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button type="submit" md-raised-button [disabled]="!heroForm.form.valid">Register</button>
+    <button type="button" md-button (click)="dialogRef.close()">Cancel</button>
+  </md-dialog-actions>
+</form>

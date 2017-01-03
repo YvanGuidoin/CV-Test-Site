@@ -58,15 +58,13 @@ export class ModifyComponent implements OnInit {
   }
 
   save() : void {
-    //TODO envoyer au serveur
-    console.log(JSON.stringify(this.resume));
     this.resumeService.sendModif(this.resume.userid, this.resume)
       .then((response: any) => {
         console.log(response);
         this.router.navigate(['/resume', this.resume.userid]);
       }).catch(err => {
         console.log(err);
-        this.router.navigate(['/resume', this.resume.userid]);        
+        this.router.navigate(['/resume', this.resume.userid]);
       });
   }
 

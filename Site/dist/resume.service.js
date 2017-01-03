@@ -37,6 +37,12 @@ var ResumeService = (function () {
         })
             .catch(this.handleError);
     };
+    ResumeService.prototype.register = function (credentials) {
+        return this.http.post(this.baseUrl + "users/", credentials)
+            .toPromise()
+            .then(function (response) { return response; })
+            .catch(this.handleError);
+    };
     ResumeService.prototype.sendModif = function (userid, resume) {
         return this.http.put(this.baseUrl + "users/" + userid, resume)
             .toPromise()

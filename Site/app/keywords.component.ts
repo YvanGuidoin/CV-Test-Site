@@ -17,8 +17,10 @@ export class KeywordsComponent {
   }
 
   addKeyword() : void {
-    this.keywords.push(this.newKeyword);
-    this.newKeyword = "";
-    this.modify.emit(this.keywords);
+    if(this.newKeyword.length > 0) {
+      this.keywords.push(this.newKeyword);
+      this.newKeyword = "";
+      this.modify.emit(this.keywords);
+    }
   }
 }

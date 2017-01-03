@@ -35,6 +35,13 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
+  register(credentials: Credentials) {
+    return this.http.post(this.baseUrl + "users/", credentials)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   sendModif(userid: String, resume: Resume) {
     return this.http.put(this.baseUrl + "users/" + userid, resume)
       .toPromise()

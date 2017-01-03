@@ -22,9 +22,11 @@ var KeywordsComponent = (function () {
         this.modify.emit(this.keywords);
     };
     KeywordsComponent.prototype.addKeyword = function () {
-        this.keywords.push(this.newKeyword);
-        this.newKeyword = "";
-        this.modify.emit(this.keywords);
+        if (this.newKeyword.length > 0) {
+            this.keywords.push(this.newKeyword);
+            this.newKeyword = "";
+            this.modify.emit(this.keywords);
+        }
     };
     return KeywordsComponent;
 }());

@@ -2,13 +2,17 @@
 
 # CV Site example
 
-This is an example site to test Cassandra, with NodeJS and Angular 2 Typescript, styled with Angular 2 Material, all prepared into Docker Compose
+This is an example site to test Cassandra, with NodeJS and Angular 2 Typescript, styled with Angular 2 Material, all prepared into Docker Compose.
+
+## Prerequisites
+
+To be able to test it, you need Docker with [Docker Compose](https://docs.docker.com/compose/install/) and [Git](https://git-scm.com/).
 
 ## Launch the project
 
 ```Bash
 git clone https://github.com/YvanGuidoin/CV-Test-Site.git
-cd CVSite
+cd CV-Test-Site
 docker-compose build
 docker-compose up
 ```

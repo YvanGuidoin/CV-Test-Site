@@ -16,6 +16,7 @@ import { DatePrettyComponent } from './datepretty.component';
 import { ModifyComponent } from './modify.component';
 
 import { ConnectDialog } from './connect-dialog.component';
+import { RegisterDialog } from './register-dialog.component';
 
 import { ResumeService } from './resume.service';
 import { DialogsService } from './dialogs.service';
@@ -26,8 +27,13 @@ const routes : Routes = [
     component: AboutComponent
   },
   {
-    path: '',
+    path: 'resume',
     component: BaseComponent
+  },
+  {
+    path: '',
+    redirectTo: 'resume',
+    pathMatch: 'full'
   },
   {
     path: 'resume/:userid',
@@ -49,7 +55,8 @@ const routes : Routes = [
                 ],
   exports:      [
                   RouterModule,
-                  ConnectDialog
+                  ConnectDialog,
+                  RegisterDialog
                 ],
   declarations: [
                   AppComponent,
@@ -61,10 +68,12 @@ const routes : Routes = [
                   QualificationComponent,
                   DatePrettyComponent,
                   ConnectDialog,
+                  RegisterDialog,
                   ModifyComponent
                 ],
   entryComponents: [
-                  ConnectDialog
+                  ConnectDialog,
+                  RegisterDialog
                 ],
   providers:    [
                   ResumeService,
