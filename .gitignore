@@ -1,2 +1,16 @@
 node_modules
 *.log
+logs
+npm-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+.yarn-integrity
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
