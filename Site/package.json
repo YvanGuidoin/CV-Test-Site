@@ -1,0 +1,52 @@
+{
+  "name": "CVSite",
+  "version": "0.0.3",
+  "description": "CV Application for test",
+  "scripts": {
+    "start": "tsc && concurrently \"tsc -w \" \"lite-server\" ",
+    "lint": "tslint ./app/**/*.ts -t verbose",
+    "lite": "lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "latest",
+    "@angular/compiler": "latest",
+    "@angular/core": "latest",
+    "@angular/flex-layout": "latest",
+    "@angular/forms": "latest",
+    "@angular/http": "latest",
+    "@angular/material": "latest",
+    "@angular/platform-browser": "latest",
+    "@angular/platform-browser-dynamic": "latest",
+    "@angular/router": "latest",
+    "core-js": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "reflect-metadata": "latest",
+    "rxjs": "latest",
+    "systemjs": "latest",
+    "zone.js": "latest"
+  },
+  "devDependencies": {
+    "@types/jasmine": "latest",
+    "@types/node": "latest",
+    "@types/selenium-webdriver": "latest",
+    "canonical-path": "latest",
+    "concurrently": "latest",
+    "http-server": "latest",
+    "jasmine-core": "latest",
+    "karma": "latest",
+    "karma-chrome-launcher": "latest",
+    "karma-cli": "latest",
+    "karma-jasmine": "latest",
+    "karma-jasmine-html-reporter": "latest",
+    "lite-server": "latest",
+    "lodash": "latest",
+    "rimraf": "latest",
+    "tslint": "latest",
+    "typescript": "latest"
+  },
+  "repository": {}
+}

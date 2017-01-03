@@ -1,0 +1,12 @@
+<div>
+  <md-chip-list [selectable]=false>
+    <md-chip *ngFor="let keyword of keywords">
+      {{keyword}}
+      <button *ngIf="editable" md-icon-button (click)="deleteKeywork(keyword)"><md-icon>delete</md-icon></button>
+    </md-chip>
+  </md-chip-list>
+  <md-input-container *ngIf="editable">
+    <input md-input required [(ngModel)]="newKeyword" name="newKeyword" placeholder="New Keyword">
+  </md-input-container>
+  <button *ngIf="editable" md-button (click)="addKeyword()">Add</button>
+</div>

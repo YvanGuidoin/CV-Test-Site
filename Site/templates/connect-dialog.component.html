@@ -1,0 +1,15 @@
+<h1 md-dialog-title>Connection</h1>
+<md-dialog-content>
+  <form>
+    <md-input-container>
+      <input md-input required [(ngModel)]="data.username" name="username" placeholder="Username">
+    </md-input-container>
+    <md-input-container>
+      <input md-input required [(ngModel)]="data.password" name="password" type="password" placeholder="Password">
+    </md-input-container>
+  </form>
+</md-dialog-content>
+<md-dialog-actions>
+  <button type="button" md-raised-button (click)="dialogRef.close(data)">Connect</button>
+  <button type="button" md-button (click)="dialogRef.close()">Cancel</button>
+</md-dialog-actions>
