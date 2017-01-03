@@ -20,6 +20,7 @@ import { RegisterDialog } from './register-dialog.component';
 
 import { ResumeService } from './resume.service';
 import { DialogsService } from './dialogs.service';
+import { CredentialsService } from './credentials.service';
 
 const routes : Routes = [
   {
@@ -77,7 +78,8 @@ const routes : Routes = [
                 ],
   providers:    [
                   ResumeService,
-                  DialogsService
+                  DialogsService,
+                  CredentialsService
                 ],
   bootstrap:    [
                   AppComponent

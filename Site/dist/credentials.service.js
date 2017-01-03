@@ -9,17 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AboutComponent = (function () {
-    function AboutComponent() {
+var subject_1 = require("rxjs/subject");
+var CredentialsService = (function () {
+    function CredentialsService() {
+        this.credentialsSource = new subject_1.Subject();
     }
-    return AboutComponent;
+    CredentialsService.prototype.setCredentials = function (cred) {
+        this.lastCredentials = cred;
+        this.credentialsSource.next(cred);
+    };
+    CredentialsService.prototype.getLastCredentials = function () {
+        return this.lastCredentials;
+    };
+    return CredentialsService;
 }());
-AboutComponent = __decorate([
-    core_1.Component({
-        selector: 'about',
-        template: '<md-card><md-card-content><p>This is an about</p></md-card-content></md-card>'
-    }),
+CredentialsService = __decorate([
+    core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], AboutComponent);
-exports.AboutComponent = AboutComponent;
-//# sourceMappingURL=about.component.js.map
+], CredentialsService);
+exports.CredentialsService = CredentialsService;
+//# sourceMappingURL=credentials.service.js.map

@@ -34,20 +34,14 @@ var ResumeService = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    ResumeService.prototype.logout = function () {
-        return this.http.post(this.baseUrl + "logout", {})
-            .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch(this.handleError);
-    };
     ResumeService.prototype.register = function (credentials) {
         return this.http.post(this.baseUrl + "users/", credentials)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
-    ResumeService.prototype.sendModif = function (userid, resume) {
-        return this.http.put(this.baseUrl + "users/" + userid, resume)
+    ResumeService.prototype.sendModif = function (credentials, resume) {
+        return this.http.put(this.baseUrl + "users/" + resume.userid, Object.assign({}, credentials, resume))
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);

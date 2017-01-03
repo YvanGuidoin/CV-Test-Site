@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
-const cookieParser = require('cookie-parser')
 const cassandra = require('cassandra-driver');
 
 const client = new cassandra.Client({ contactPoints: ['cassandra-db-alias'], keyspace: 'resumes' })
@@ -12,12 +11,18 @@ var app = express();
 
 // middleware to test authentication
 var myAuthenticate = function(req, res, next) {
-    console.log("Middleware Cookies:");
-    console.log(req.cookies);
-    next();
+    if(!req.body.username || !req.body.password) res.sendStatus(401);
+    const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
+    client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
+      if(err) res.sendStatus(500);
+      if(!result) res.sendStatus(403);
+      if(result.rows[0].password == req.body.password){
+        next();
+      }
+      else res.sendStatus(403);
+    });
 };
 
-app.use(cookieParser())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", DOMAIN);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -32,23 +37,14 @@ app.post('/login', jsonParser, function(req, res) {
     if(err) res.sendStatus(500);
     if(!result) res.sendStatus(403);
     if(result.rows[0].password == req.body.password){
-      var credentials = {
+      res.status(200).json({
         userid: result.rows[0].userid,
         username: result.rows[0].pseudo,
         password: result.rows[0].password
-      };
-      res.cookie('credentials', credentials).status(200).json(credentials);
+      });
     }
     else res.sendStatus(403);
   });
-});
-
-app.post('/logout', function(req, res) {
-  console.log("Cookies avant logout:");
-  console.log(req.cookies);
-  res.clearCookie('credentials').status(200).json({ logout: true });
-  console.log("Cookies apres logout:");
-  console.log(req.cookies);
 });
 
 app.get('/users', function(req, res) {
@@ -74,7 +70,7 @@ app.post('/users', jsonParser, function(req, res) {
     });
 });
 
-app.put('/users/:id', myAuthenticate, jsonParser, function(req, res) {
+app.put('/users/:id', jsonParser, myAuthenticate, function(req, res) {
     // correct the fromJson('null') from Cassandra
     if(!req.body.past_jobs) req.body.past_jobs = [];
     if(!req.body.qualifications) req.body.qualifications = [];

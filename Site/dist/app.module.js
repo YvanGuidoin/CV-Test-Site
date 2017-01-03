@@ -27,6 +27,7 @@ var connect_dialog_component_1 = require("./connect-dialog.component");
 var register_dialog_component_1 = require("./register-dialog.component");
 var resume_service_1 = require("./resume.service");
 var dialogs_service_1 = require("./dialogs.service");
+var credentials_service_1 = require("./credentials.service");
 var routes = [
     {
         path: 'about',
@@ -88,7 +89,8 @@ AppModule = __decorate([
         ],
         providers: [
             resume_service_1.ResumeService,
-            dialogs_service_1.DialogsService
+            dialogs_service_1.DialogsService,
+            credentials_service_1.CredentialsService
         ],
         bootstrap: [
             app_component_1.AppComponent

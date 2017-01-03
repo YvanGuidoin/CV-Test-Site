@@ -32,13 +32,6 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
-  logout(): Promise<any> {
-    return this.http.post(this.baseUrl + "logout", {})
-      .toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
-  }
-
   register(credentials: Credentials): Promise<any> {
     return this.http.post(this.baseUrl + "users/", credentials)
       .toPromise()
@@ -46,8 +39,8 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
-  sendModif(userid: string, resume: Resume): Promise<any> {
-    return this.http.put(this.baseUrl + "users/" + userid, resume)
+  sendModif(credentials: Credentials, resume: Resume): Promise<any> {
+    return this.http.put(this.baseUrl + "users/" + resume.userid, Object.assign({}, credentials, resume))
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);

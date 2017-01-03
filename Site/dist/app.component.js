@@ -9,14 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var dialogs_service_1 = require("./dialogs.service");
 var resume_service_1 = require("./resume.service");
+var credentials_service_1 = require("./credentials.service");
 var AppComponent = (function () {
-    function AppComponent(dialogsService, resumeService, viewContainerRef) {
+    function AppComponent(dialogsService, resumeService, credentialsService, router, viewContainerRef) {
+        var _this = this;
         this.dialogsService = dialogsService;
         this.resumeService = resumeService;
+        this.credentialsService = credentialsService;
+        this.router = router;
         this.viewContainerRef = viewContainerRef;
         this.title = 'CV Site Example';
+        this.subscription = credentialsService.credentialsSource.subscribe(function (credentials) { return _this.credentials = credentials; });
     }
     AppComponent.prototype.openConnectDialog = function () {
         var _this = this;
@@ -25,8 +31,8 @@ var AppComponent = (function () {
             .subscribe(function (data) {
             if (data) {
                 _this.resumeService.login(data.username, data.password)
-                    .then(function (credentials) { return _this.credentials = credentials; })
-                    .catch(function (err) { return _this.credentials = null; });
+                    .then(function (credentials) { return _this.credentialsService.setCredentials(credentials); })
+                    .catch(function (err) { return _this.credentialsService.setCredentials(null); });
             }
         });
     };
@@ -41,20 +47,24 @@ var AppComponent = (function () {
         });
     };
     AppComponent.prototype.disconnect = function () {
-        var _this = this;
-        this.resumeService.logout()
-            .then(function (credentials) { return _this.credentials = null; })
-            .catch(function (err) { return _this.credentials = null; });
+        this.credentialsService.setCredentials(null);
+        this.router.navigate(['/resume']);
+    };
+    AppComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
     };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        templateUrl: 'templates/app.component.html'
+        templateUrl: 'templates/app.component.html',
+        providers: [credentials_service_1.CredentialsService]
     }),
     __metadata("design:paramtypes", [dialogs_service_1.DialogsService,
         resume_service_1.ResumeService,
+        credentials_service_1.CredentialsService,
+        router_1.Router,
         core_1.ViewContainerRef])
 ], AppComponent);
 exports.AppComponent = AppComponent;

@@ -1,8 +1,11 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Subscription }   from 'rxjs/Subscription';
 
-import { Resume, Job, Qualification } from './resume';
 import { ResumeService } from './resume.service';
+import { CredentialsService } from './credentials.service';
+
+import { Resume, Job, Qualification, Credentials } from './resume';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -10,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
   selector: 'modify',
   templateUrl : 'templates/modify.component.html'
 })
-export class ModifyComponent implements OnInit {
+export class ModifyComponent implements OnInit, OnDestroy  {
   resume: Resume;
   genders: Object[] = [
     {value: "M", title: "Male"},
@@ -18,12 +21,18 @@ export class ModifyComponent implements OnInit {
   ];
   newJob: Job = new Job();
   newQualif: Qualification = new Qualification();
+  credentials : Credentials;
+  subscription: Subscription;
 
   constructor(
     private resumeService: ResumeService,
+    private credentialsService: CredentialsService,
     private router: Router,
     private route: ActivatedRoute
-  ){}
+  ){
+    this.credentials = credentialsService.getLastCredentials();
+    this.subscription = credentialsService.credentialsSource.subscribe(credentials => this.credentials = credentials);
+  }
 
   printGender(gender: string): string {
     return (gender == "M") ? ", Male" : (gender == "M") ? ", Female" : "";
@@ -50,17 +59,20 @@ export class ModifyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params
+    if(!this.credentials) this.router.navigate(['/resume']);
+    else this.route.params
       .switchMap((params: Params) => this.resumeService.getResume(params['userid']))
       .subscribe((resume: Resume) => this.resume = resume);
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   save() : void {
-    this.resumeService.sendModif(this.resume.userid, this.resume)
-      .then((response: any) => {
-        console.log(response);
-        this.router.navigate(['/resume', this.resume.userid]);
-      }).catch(err => {
+    this.resumeService.sendModif(this.credentials, this.resume)
+      .then((response: any) => this.router.navigate(['/resume', this.resume.userid]))
+      .catch((err: any) => {
         console.log(err);
         this.router.navigate(['/resume', this.resume.userid]);
       });
