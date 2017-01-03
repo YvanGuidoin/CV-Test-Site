@@ -25,7 +25,7 @@ export class AppComponent implements OnDestroy {
     private router: Router,
     private viewContainerRef: ViewContainerRef
   ) {
-    this.subscription = credentialsService.credentialsSource.subscribe(credentials => this.credentials = credentials);
+    this.subscription = credentialsService.credentialsSource.subscribe((credentials: Credentials) => this.credentials = credentials);
   }
 
   openConnectDialog(): void {

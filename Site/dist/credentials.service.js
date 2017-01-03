@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var subject_1 = require("rxjs/subject");
+var Subject_1 = require("rxjs/Subject");
 var CredentialsService = (function () {
     function CredentialsService() {
-        this.credentialsSource = new subject_1.Subject();
+        this.credentialsSource = new Subject_1.Subject();
     }
     CredentialsService.prototype.setCredentials = function (cred) {
         this.lastCredentials = cred;

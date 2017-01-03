@@ -31,7 +31,7 @@ export class ModifyComponent implements OnInit, OnDestroy  {
     private route: ActivatedRoute
   ){
     this.credentials = credentialsService.getLastCredentials();
-    this.subscription = credentialsService.credentialsSource.subscribe(credentials => this.credentials = credentials);
+    this.subscription = credentialsService.credentialsSource.subscribe((credentials: Credentials) => this.credentials = credentials);
   }
 
   printGender(gender: string): string {
