@@ -21,8 +21,16 @@ var RegisterDialog = (function () {
         this.usernameTaken = false;
     }
     RegisterDialog.prototype.onSubmit = function () {
+        var _this = this;
         this.resumeService.register(this.data)
-            .then(function (a) { return console.log(a); });
+            .then(function (data) {
+            if (data.usernameTaken)
+                _this.usernameTaken = true;
+            else {
+                _this.usernameTaken = false;
+                _this.dialogRef.close(_this.data);
+            }
+        });
     };
     return RegisterDialog;
 }());

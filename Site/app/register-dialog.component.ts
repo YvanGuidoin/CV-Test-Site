@@ -22,7 +22,12 @@ export class RegisterDialog {
 
   onSubmit() : void {
     this.resumeService.register(this.data)
-      .then(a => console.log(a));
-    // this.dialogRef.close(this.data);
+      .then(data => {
+        if(data.usernameTaken) this.usernameTaken = true;
+        else {
+          this.usernameTaken = false;
+          this.dialogRef.close(this.data);
+        }
+      });
   }
 }

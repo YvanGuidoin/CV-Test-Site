@@ -36,10 +36,15 @@ var AppComponent = (function () {
             .register(this.viewContainerRef)
             .subscribe(function (data) {
             if (data) {
-                _this.credentials = data;
                 _this.openConnectDialog();
             }
         });
+    };
+    AppComponent.prototype.disconnect = function () {
+        var _this = this;
+        this.resumeService.logout()
+            .then(function (credentials) { return _this.credentials = null; })
+            .catch(function (err) { return _this.credentials = null; });
     };
     return AppComponent;
 }());

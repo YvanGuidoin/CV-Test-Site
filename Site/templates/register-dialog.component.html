@@ -1,5 +1,4 @@
-<!-- <h1 md-dialog-title>Register</h1> -->
-<form (ng-submit)="onSubmit()" #heroForm="ngForm">
+<form #resumeForm="ngForm">
   <md-dialog-content>
     <table style="width: 100%">
       <tr>
@@ -32,7 +31,7 @@
     </table>
   </md-dialog-content>
   <md-dialog-actions>
-    <button type="submit" md-raised-button [disabled]="!heroForm.form.valid">Register</button>
+    <button type="submit" md-raised-button [disabled]="!resumeForm.form.valid || data.password != passwordDouble" (click)="onSubmit()">Register</button>
     <button type="button" md-button (click)="dialogRef.close()">Cancel</button>
   </md-dialog-actions>
 </form>

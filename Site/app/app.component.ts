@@ -36,9 +36,14 @@ export class AppComponent  {
      .register(this.viewContainerRef)
      .subscribe((data) => {
        if(data){
-         this.credentials = data;
          this.openConnectDialog();
        }
      });
+  }
+
+  disconnect(): void {
+    this.resumeService.logout()
+     .then(credentials => this.credentials = null)
+     .catch(err => this.credentials = null);
   }
 }

@@ -25,27 +25,31 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
-  login(username: String, password: String) {
+  login(username: String, password: String): Promise<Credentials> {
     return this.http.post(this.baseUrl + "login", { username, password })
       .toPromise()
-      .then(response => {
-        console.log(response);
-        return response.json() as Credentials;}
-      )
+      .then(response => response.json() as Credentials)
       .catch(this.handleError);
   }
 
-  register(credentials: Credentials) {
+  logout(): Promise<any> {
+    return this.http.post(this.baseUrl + "logout", {})
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+  register(credentials: Credentials): Promise<any> {
     return this.http.post(this.baseUrl + "users/", credentials)
       .toPromise()
-      .then(response => response as any)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 
-  sendModif(userid: String, resume: Resume) {
+  sendModif(userid: String, resume: Resume): Promise<any> {
     return this.http.put(this.baseUrl + "users/" + userid, resume)
       .toPromise()
-      .then(response => response as any)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

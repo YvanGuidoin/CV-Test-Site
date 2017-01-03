@@ -31,22 +31,25 @@ var ResumeService = (function () {
     ResumeService.prototype.login = function (username, password) {
         return this.http.post(this.baseUrl + "login", { username: username, password: password })
             .toPromise()
-            .then(function (response) {
-            console.log(response);
-            return response.json();
-        })
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    ResumeService.prototype.logout = function () {
+        return this.http.post(this.baseUrl + "logout", {})
+            .toPromise()
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     ResumeService.prototype.register = function (credentials) {
         return this.http.post(this.baseUrl + "users/", credentials)
             .toPromise()
-            .then(function (response) { return response; })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     ResumeService.prototype.sendModif = function (userid, resume) {
         return this.http.put(this.baseUrl + "users/" + userid, resume)
             .toPromise()
-            .then(function (response) { return response; })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     ResumeService.prototype.handleError = function (error) {

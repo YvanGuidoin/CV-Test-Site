@@ -26,8 +26,6 @@ app.use(function(req, res, next) {
 });
 
 app.post('/login', jsonParser, function(req, res) {
-  console.log("Cookies:");
-  console.log(req.cookies);
   if(!req.body.username || !req.body.password) res.sendStatus(400);
   const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
   client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
@@ -39,10 +37,18 @@ app.post('/login', jsonParser, function(req, res) {
         username: result.rows[0].pseudo,
         password: result.rows[0].password
       };
-      res.cookie('credentials', credentials).status(200).json(credentials);
+      res.cookie('credentials', credentials, { domain: '.app.localhost' }).status(200).json(credentials);
     }
     else res.sendStatus(403);
   });
+});
+
+app.post('/logout', function(req, res) {
+  console.log("Cookies avant logout:");
+  console.log(req.cookies);
+  res.clearCookie('credentials', { domain: '.app.localhost' }).status(200).json({ logout: true });
+  console.log("Cookies apres logout:");
+  console.log(req.cookies);
 });
 
 app.get('/users', function(req, res) {
@@ -53,9 +59,19 @@ app.get('/users', function(req, res) {
   });
 });
 
-app.post('/users', function(req, res) {
-    console.log(req.body);
-    res.status(200).end();
+app.post('/users', jsonParser, function(req, res) {
+    const queryUser = 'SELECT pseudo FROM users WHERE pseudo=?';
+    const queryCreate = 'INSERT INTO users (userid, pseudo, password) VALUES (now(), ?, ?)';
+    client.execute(queryUser, [ req.body.username ], { prepare: true }, function(err, result){
+      if(err) res.sendStatus(500);
+      if(result.rows.length > 0) res.status(200).json({ usernameTaken: true });
+      else {
+        client.execute(queryCreate, [ req.body.username, req.body.password ], { prepare: true }, function(err2, result2){
+            if(err2) res.sendStatus(500);
+            else res.status(200).json({ username: req.body.username, password: req.body.password });
+        });
+      }
+    });
 });
 
 app.put('/users/:id', myAuthenticate, jsonParser, function(req, res) {
