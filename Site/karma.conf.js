@@ -1,7 +1,6 @@
 module.exports = function(config) {
 
   var appBase    = 'dist/';      // transpiled app JS and map files
-  // var appSrcBase = 'app';      // app source TS files
   var appAssets  = 'templates/'; // component assets fetched by Angular's compiler
 
   config.set({
@@ -17,15 +16,6 @@ module.exports = function(config) {
     client: {
       builtPaths: [ appBase ], // add more spec base paths as needed
       clearContext: false // leave Jasmine Spec Runner output visible in browser
-    },
-
-    customLaunchers: {
-      // From the CLI. Not used here but interesting
-      // chrome setup for travis CI using chromium
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
     },
 
     files: [
@@ -63,17 +53,7 @@ module.exports = function(config) {
       // (these paths need to be rewritten, see proxies section)
       { pattern: appBase + '**/*.html', included: false, watched: true },
       { pattern: appBase + '**/*.css', included: false, watched: true }
-
-      // Paths for debugging with source maps in dev tools
-      // { pattern: appSrcBase + '**/*.ts', included: false, watched: false },
-      // { pattern: appBase + '**/*.js.map', included: false, watched: false }
     ],
-
-    // Proxied base paths for loading assets
-    proxies: {
-      // required for component assets fetched by Angular's compiler
-      "/templates/": templates
-    },
 
     exclude: [],
     preprocessors: {},

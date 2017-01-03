@@ -14,6 +14,7 @@ import { KeywordsComponent } from './keywords.component';
 import { QualificationComponent } from './qualif.component';
 import { DatePrettyComponent } from './datepretty.component';
 import { ModifyComponent } from './modify.component';
+import { PageNotFoundComponent } from './not-found.component';
 
 import { ConnectDialog } from './connect-dialog.component';
 import { RegisterDialog } from './register-dialog.component';
@@ -43,7 +44,8 @@ const routes : Routes = [
   {
     path: 'modify/:userid',
     component: ModifyComponent
-  }
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -52,7 +54,7 @@ const routes : Routes = [
                   FormsModule,
                   MaterialModule.forRoot(),
                   FlexLayoutModule.forRoot(),
-                  RouterModule.forRoot(routes)
+                  RouterModule.forRoot(routes, {useHash: true})
                 ],
   exports:      [
                   RouterModule,
@@ -70,7 +72,8 @@ const routes : Routes = [
                   DatePrettyComponent,
                   ConnectDialog,
                   RegisterDialog,
-                  ModifyComponent
+                  ModifyComponent,
+                  PageNotFoundComponent
                 ],
   entryComponents: [
                   ConnectDialog,

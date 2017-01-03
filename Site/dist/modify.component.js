@@ -88,4 +88,3 @@ ModifyComponent = __decorate([
         router_1.ActivatedRoute])
 ], ModifyComponent);
 exports.ModifyComponent = ModifyComponent;
-//# sourceMappingURL=modify.component.js.map

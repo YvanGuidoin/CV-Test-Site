@@ -1,6 +1,6 @@
 {
   "name": "CVSite",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Test of a CV site on NodeJS and Cassandra in Docker",
   "author": "Yvan Guidoin",
   "main": "server.js",

@@ -40,4 +40,3 @@ QualificationComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], QualificationComponent);
 exports.QualificationComponent = QualificationComponent;
-//# sourceMappingURL=qualif.component.js.map

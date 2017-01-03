@@ -45,4 +45,3 @@ ResumeComponent = __decorate([
         router_1.ActivatedRoute])
 ], ResumeComponent);
 exports.ResumeComponent = ResumeComponent;
-//# sourceMappingURL=resume.component.js.map

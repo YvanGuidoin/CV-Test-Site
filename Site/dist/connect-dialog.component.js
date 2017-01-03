@@ -26,4 +26,3 @@ ConnectDialog = __decorate([
     __metadata("design:paramtypes", [material_1.MdDialogRef])
 ], ConnectDialog);
 exports.ConnectDialog = ConnectDialog;
-//# sourceMappingURL=connect-dialog.component.js.map

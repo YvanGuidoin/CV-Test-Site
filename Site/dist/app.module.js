@@ -23,6 +23,7 @@ var keywords_component_1 = require("./keywords.component");
 var qualif_component_1 = require("./qualif.component");
 var datepretty_component_1 = require("./datepretty.component");
 var modify_component_1 = require("./modify.component");
+var not_found_component_1 = require("./not-found.component");
 var connect_dialog_component_1 = require("./connect-dialog.component");
 var register_dialog_component_1 = require("./register-dialog.component");
 var resume_service_1 = require("./resume.service");
@@ -49,7 +50,8 @@ var routes = [
     {
         path: 'modify/:userid',
         component: modify_component_1.ModifyComponent
-    }
+    },
+    { path: '**', component: not_found_component_1.PageNotFoundComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -63,7 +65,7 @@ AppModule = __decorate([
             forms_1.FormsModule,
             material_1.MaterialModule.forRoot(),
             flex_layout_1.FlexLayoutModule.forRoot(),
-            router_1.RouterModule.forRoot(routes)
+            router_1.RouterModule.forRoot(routes, { useHash: true })
         ],
         exports: [
             router_1.RouterModule,
@@ -81,7 +83,8 @@ AppModule = __decorate([
             datepretty_component_1.DatePrettyComponent,
             connect_dialog_component_1.ConnectDialog,
             register_dialog_component_1.RegisterDialog,
-            modify_component_1.ModifyComponent
+            modify_component_1.ModifyComponent,
+            not_found_component_1.PageNotFoundComponent
         ],
         entryComponents: [
             connect_dialog_component_1.ConnectDialog,
@@ -99,4 +102,3 @@ AppModule = __decorate([
     __metadata("design:paramtypes", [])
 ], AppModule);
 exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map

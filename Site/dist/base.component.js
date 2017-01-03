@@ -38,4 +38,3 @@ BaseComponent = __decorate([
         router_1.Router])
 ], BaseComponent);
 exports.BaseComponent = BaseComponent;
-//# sourceMappingURL=base.component.js.map

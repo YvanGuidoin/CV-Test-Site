@@ -9,20 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var DatePrettyComponent = (function () {
-    function DatePrettyComponent() {
+var PageNotFoundComponent = (function () {
+    function PageNotFoundComponent() {
     }
-    return DatePrettyComponent;
+    return PageNotFoundComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", Date)
-], DatePrettyComponent.prototype, "date", void 0);
-DatePrettyComponent = __decorate([
+PageNotFoundComponent = __decorate([
     core_1.Component({
-        selector: 'datepretty',
-        templateUrl: 'templates/datepretty.component.html'
+        template: '<h2>Page not found</h2>'
     }),
     __metadata("design:paramtypes", [])
-], DatePrettyComponent);
-exports.DatePrettyComponent = DatePrettyComponent;
+], PageNotFoundComponent);
+exports.PageNotFoundComponent = PageNotFoundComponent;

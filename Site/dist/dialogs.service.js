@@ -37,4 +37,3 @@ DialogsService = __decorate([
     __metadata("design:paramtypes", [material_1.MdDialog])
 ], DialogsService);
 exports.DialogsService = DialogsService;
-//# sourceMappingURL=dialogs.service.js.map

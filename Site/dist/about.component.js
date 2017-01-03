@@ -22,4 +22,3 @@ AboutComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], AboutComponent);
 exports.AboutComponent = AboutComponent;
-//# sourceMappingURL=about.component.js.map

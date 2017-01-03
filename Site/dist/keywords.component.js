@@ -50,4 +50,3 @@ KeywordsComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], KeywordsComponent);
 exports.KeywordsComponent = KeywordsComponent;
-//# sourceMappingURL=keywords.component.js.map

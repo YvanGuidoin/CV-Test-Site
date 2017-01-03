@@ -40,4 +40,3 @@ JobComponent = __decorate([
     __metadata("design:paramtypes", [])
 ], JobComponent);
 exports.JobComponent = JobComponent;
-//# sourceMappingURL=job.component.js.map

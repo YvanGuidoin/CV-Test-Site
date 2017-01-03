@@ -90,9 +90,7 @@ app.put('/users/:id', jsonParser, myAuthenticate, function(req, res) {
         console.log(err);
         res.status(500).json(err);
       }
-      if(result){
-        res.status(200).json(result);
-      }
+      res.status(200).json(result);
     });
 });
 
