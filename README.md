@@ -1,3 +1,5 @@
+# THIS IS A WIP, SOME THINGS MIGHT NOT BE WORKING AS INTENDED, IT'S NORMAL
+
 # CV Site example
 
 This is an example site to test Cassandra, with NodeJS and Angular 2 Typescript, styled with Angular 2 Material, all prepared into Docker Compose
@@ -11,7 +13,7 @@ docker-compose build
 docker-compose up
 ```
 
-Wait for a few seconds (around 30) for the database to initialize before opening your browser on http://localhost
+Wait for a few seconds (around 30) for the database to initialize before opening your browser on <http://localhost>
 
 ## Cassandra
 
