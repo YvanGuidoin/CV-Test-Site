@@ -1,6 +1,6 @@
 # CV Site example
 
-This is an example site to test Cassandra, with NodeJS and Angular 2 Typescript, styled with Angular 2 Material
+This is an example site to test Cassandra, with NodeJS and Angular 2 Typescript, styled with Angular 2 Material, all prepared into Docker Compose
 
 ## Launch the project
 
