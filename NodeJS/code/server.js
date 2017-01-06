@@ -5,7 +5,7 @@ const cassandra = require('cassandra-driver');
 
 const client = new cassandra.Client({ contactPoints: ['cassandra-db-alias'], keyspace: 'resumes' })
 
-const DOMAIN = process.env.DOMAIN || "http://localhost";
+const DOMAIN_CROS = process.env.DOMAIN_CROS || "*";
 
 var app = express();
 
@@ -24,7 +24,7 @@ var myAuthenticate = function(req, res, next) {
 };
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", DOMAIN);
+  res.header("Access-Control-Allow-Origin", DOMAIN_CROS);
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, if-none-match");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
   next();
