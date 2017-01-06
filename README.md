@@ -51,3 +51,11 @@ The server is a simple API for the database and don't have real logic beside aut
 The site is an [Angular 2](https://angular.io/) project made with System.js, [Angular 2 Material](https://github.com/angular/material2) and [Angular 2 Flex Layout](https://github.com/angular/flex-layout). The files are made accessible using a Nginx instance.
 
 Package management was made using [Yarn](https://yarnpkg.com/).
+
+## Usual problems
+
+If you have a slow computer, the input of data may be tried too soon during the launch of Cassandra. In this case you can enter this instruction after the docker-compose up
+
+```Bash
+docker exec cassandra-db cqlsh -f /base_data.cql
+```
