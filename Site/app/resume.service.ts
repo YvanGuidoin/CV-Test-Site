@@ -7,7 +7,7 @@ import { Job, Qualification, Resume, Credentials } from './resume';
 
 @Injectable()
 export class ResumeService {
-  private baseUrl = "http://localhost:8080/";
+  private baseUrl = "http://" + window.location.hostname + ":8080/";
 
   constructor(private http: Http) {}
 

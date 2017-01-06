@@ -14,7 +14,7 @@ require("rxjs/add/operator/toPromise");
 var ResumeService = (function () {
     function ResumeService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:8080/";
+        this.baseUrl = "http://" + window.location.hostname + ":8080/";
     }
     ResumeService.prototype.getResumes = function () {
         return this.http.get(this.baseUrl + "users")
