@@ -46,6 +46,13 @@ export class ResumeService {
       .catch(this.handleError);
   }
 
+  deleteResume(credentials: Credentials): Promise<any> {
+    return this.http.post(this.baseUrl + "users/delete/" + credentials.userid, credentials)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
   handleError(error: any): Promise<any> {
     console.error('An error occured', error);
     return Promise.reject(error.message || error);

@@ -12,15 +12,17 @@ var app = express();
 // middleware to test authentication
 var myAuthenticate = function(req, res, next) {
     if(!req.body.username || !req.body.password) res.sendStatus(401);
-    const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
-    client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
-      if(err) res.sendStatus(500);
-      if(!result) res.sendStatus(403);
-      if(result.rows[0].password == req.body.password){
-        next();
-      }
-      else res.sendStatus(403);
-    });
+    else {
+      const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
+      client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
+        if(err) res.sendStatus(500);
+        if(!result) res.sendStatus(403);
+        if(result.rows[0].password == req.body.password){
+          next();
+        }
+        else res.sendStatus(403);
+      });
+    }
 };
 
 app.use(function(req, res, next) {
@@ -48,7 +50,7 @@ app.post('/login', jsonParser, function(req, res) {
 });
 
 app.get('/users', function(req, res) {
-  const query = 'SELECT userid, name, surname, birthdate, gender, address, presentation, past_jobs, qualifications, keywords FROM users';
+  const query = 'SELECT userid, name, surname, presentation, keywords FROM users';
   client.execute(query, [], function(err, result) {
     if(err) console.log(err);
     res.json(result.rows);
@@ -94,10 +96,25 @@ app.put('/users/:id', jsonParser, myAuthenticate, function(req, res) {
     });
 });
 
+app.post('/users/delete/:id', jsonParser, myAuthenticate, function(req, res) {
+  const query = 'DELETE FROM users WHERE userid=?';
+  client.execute(query, [ req.params.id ], { prepare: true }, function(err, result) {
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.status(200).json(result);
+    }
+  });
+});
+
 app.get('/users/:id', function(req, res) {
     const query = 'SELECT userid, name, surname, birthdate, gender, address, presentation, past_jobs, qualifications, keywords FROM users WHERE userid=?';
     client.execute(query, [ req.params.id ], { prepare: true }, function(err, result) {
-      if(err) console.log(err);
+      if(err){
+        console.log(err);
+        res.sendStatus(500);
+      }
       if(result){
         if(result.rows[0]) res.json(result.rows[0]);
       }

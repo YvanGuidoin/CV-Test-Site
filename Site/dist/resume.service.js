@@ -46,6 +46,12 @@ var ResumeService = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    ResumeService.prototype.deleteResume = function (credentials) {
+        return this.http.post(this.baseUrl + "users/delete/" + credentials.userid, credentials)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     ResumeService.prototype.handleError = function (error) {
         console.error('An error occured', error);
         return Promise.reject(error.message || error);

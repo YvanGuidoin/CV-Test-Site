@@ -78,6 +78,15 @@ export class ModifyComponent implements OnInit, OnDestroy  {
       });
   }
 
+  delete() : void {
+    this.resumeService.deleteResume(this.credentials)
+      .then((response: any) => this.router.navigate(['/resume']))
+      .catch((err: any) => {
+        console.log(err);
+        this.router.navigate(['/resume']);
+      });
+  }
+
   cancel() : void {
     this.router.navigate(['/resume', this.resume.userid]);
   }
