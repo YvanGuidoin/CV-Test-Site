@@ -4,7 +4,7 @@ MAINTAINER Yvan Guidoin
 ENV APP_DIR=/usr/src/app
 
 RUN mkdir -p $APP_DIR
-COPY  ./code $APP_DIR
+COPY  . $APP_DIR
 
 WORKDIR $APP_DIR
 RUN npm install

@@ -72,6 +72,15 @@ var ModifyComponent = (function () {
             _this.router.navigate(['/resume', _this.resume.userid]);
         });
     };
+    ModifyComponent.prototype.delete = function () {
+        var _this = this;
+        this.resumeService.deleteResume(this.credentials)
+            .then(function (response) { return _this.router.navigate(['/resume']); })
+            .catch(function (err) {
+            console.log(err);
+            _this.router.navigate(['/resume']);
+        });
+    };
     ModifyComponent.prototype.cancel = function () {
         this.router.navigate(['/resume', this.resume.userid]);
     };

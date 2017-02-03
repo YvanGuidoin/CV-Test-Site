@@ -4,8 +4,8 @@
   "description": "Test of a CV site on NodeJS and Cassandra in Docker",
   "author": "Yvan Guidoin",
   "main": "server.js",
-  "config" : {
-    "port" : "8080"
+  "config": {
+    "port": "8080"
   },
   "scripts": {
     "start": "node server.js"
