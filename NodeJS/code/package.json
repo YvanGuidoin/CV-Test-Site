@@ -11,8 +11,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4",
-    "cassandra-driver": "^3",
-    "body-parser": "^1"
+    "express": "^4.14.1",
+    "cassandra-driver": "^3.2.0",
+    "body-parser": "^1.16.0"
   }
 }

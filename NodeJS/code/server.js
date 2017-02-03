@@ -15,8 +15,8 @@ var myAuthenticate = function(req, res, next) {
     const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
     client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
       if(err) res.sendStatus(500);
-      if(!result) res.sendStatus(403);
-      if(result.rows[0].password == req.body.password){
+      else if(!result) res.sendStatus(403);
+      else if(result.rows[0].password == req.body.password){
         next();
       }
       else res.sendStatus(403);
@@ -35,8 +35,8 @@ app.post('/login', jsonParser, function(req, res) {
   const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
   client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
     if(err) res.sendStatus(500);
-    if(!result) res.sendStatus(403);
-    if(result.rows[0].password == req.body.password){
+    else if(!result) res.sendStatus(403);
+    else if(result.rows[0].password == req.body.password){
       res.status(200).json({
         userid: result.rows[0].userid,
         username: result.rows[0].pseudo,
@@ -60,7 +60,7 @@ app.post('/users', jsonParser, function(req, res) {
     const queryCreate = 'INSERT INTO users (userid, pseudo, password) VALUES (now(), ?, ?)';
     client.execute(queryUser, [ req.body.username ], { prepare: true }, function(err, result){
       if(err) res.sendStatus(500);
-      if(result.rows.length > 0) res.status(200).json({ usernameTaken: true });
+      else if(result.rows.length > 0) res.status(200).json({ usernameTaken: true });
       else {
         client.execute(queryCreate, [ req.body.username, req.body.password ], { prepare: true }, function(err2, result2){
             if(err2) res.sendStatus(500);
@@ -90,7 +90,7 @@ app.put('/users/:id', jsonParser, myAuthenticate, function(req, res) {
         console.log(err);
         res.status(500).json(err);
       }
-      res.status(200).json(result);
+      else res.status(200).json(result);
     });
 });
 
@@ -98,7 +98,7 @@ app.get('/users/:id', function(req, res) {
     const query = 'SELECT userid, name, surname, birthdate, gender, address, presentation, past_jobs, qualifications, keywords FROM users WHERE userid=?';
     client.execute(query, [ req.params.id ], { prepare: true }, function(err, result) {
       if(err) console.log(err);
-      if(result){
+      else if(result){
         if(result.rows[0]) res.json(result.rows[0]);
       }
     });

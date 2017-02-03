@@ -36,7 +36,6 @@ QualificationComponent = __decorate([
     core_1.Component({
         selector: 'qualif',
         templateUrl: 'templates/qualif.component.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], QualificationComponent);
 exports.QualificationComponent = QualificationComponent;

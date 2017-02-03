@@ -36,7 +36,7 @@ services:
     environment:
       CASSANDRA_SEEDS: cassandra-db
   static-files:
-    image: nginx
+    image: nginx:alpine
     volumes:
       - ./Site:/usr/share/nginx/html
     container_name: cv-site-static

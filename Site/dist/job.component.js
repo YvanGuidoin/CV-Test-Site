@@ -36,7 +36,6 @@ JobComponent = __decorate([
     core_1.Component({
         selector: 'job',
         templateUrl: 'templates/job.component.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], JobComponent);
 exports.JobComponent = JobComponent;

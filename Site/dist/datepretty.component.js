@@ -22,7 +22,6 @@ DatePrettyComponent = __decorate([
     core_1.Component({
         selector: 'datepretty',
         templateUrl: 'templates/datepretty.component.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], DatePrettyComponent);
 exports.DatePrettyComponent = DatePrettyComponent;

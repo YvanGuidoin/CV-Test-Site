@@ -46,7 +46,6 @@ KeywordsComponent = __decorate([
     core_1.Component({
         selector: 'keywords',
         templateUrl: 'templates/keywords.component.html'
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], KeywordsComponent);
 exports.KeywordsComponent = KeywordsComponent;
