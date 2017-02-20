@@ -1,0 +1,11 @@
+<md-toolbar color="primary">
+  <span><h1>{{title}}</h1></span>
+  <span class="example-fill-remaining-space"></span>
+  <button md-button routerLink="/resume">List of resumes</button>
+  <button *ngIf="!credentials" md-button (click)="openConnectDialog()">Connect</button>
+  <button *ngIf="!credentials" md-button (click)="openRegisterDialog()">Register</button>
+  <button *ngIf="credentials" md-button routerLink="/modify/{{credentials.userid}}">Modify your CV</button>
+  <button *ngIf="credentials" md-button (click)="disconnect()">Disconnect</button>
+  <button md-button routerLink="/about">About</button>
+</md-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,5 @@
+@import './node_modules/@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}

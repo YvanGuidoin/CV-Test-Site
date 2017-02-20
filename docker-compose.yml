@@ -38,7 +38,7 @@ services:
   static-files:
     image: nginx:alpine
     volumes:
-      - ./Site:/usr/share/nginx/html
+      - ./Site/build:/usr/share/nginx/html
     container_name: cv-site-static
     ports:
       - 80:80

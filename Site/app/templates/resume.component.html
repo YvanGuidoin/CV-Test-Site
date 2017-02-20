@@ -1,0 +1,16 @@
+<div *ngIf="resume">
+  <md-card>
+    <md-card-content>
+      <h2> {{resume.name}} {{resume.surname}}, {{calculateAge(resume.birthdate)}}{{printGender(resume.gender)}} </h2>
+      <h4> {{resume.address}} </h4>
+      <p [innerHtml]=resume.presentation></p>
+      <h5> Jobs: </h5>
+      <job [job]="job" *ngFor="let job of resume.past_jobs"></job>
+      <h5> Qualifications: </h5>
+      <qualif [qualif]="qualif" *ngFor="let qualif of resume.qualifications"></qualif>
+    </md-card-content>
+    <md-card-footer>
+      <keywords [keywords]="resume.keywords"></keywords>
+    </md-card-footer>
+  </md-card>
+</div>
