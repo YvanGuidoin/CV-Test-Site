@@ -48,7 +48,7 @@ The server is a simple API for the database and don't have real logic beside aut
 
 ### Site
 
-The site is an [Angular 2](https://angular.io/) project made with System.js, [Angular 2 Material](https://github.com/angular/material2) and [Angular 2 Flex Layout](https://github.com/angular/flex-layout). The files are made accessible using a Nginx instance.
+The site is an [Angular 2](https://angular.io/) project made with [Webpack 2](https://webpack.js.org/), [Angular 2 Material](https://material.angular.io/) and [Angular 2 Flex Layout](https://github.com/angular/flex-layout). The files are made accessible using a Nginx instance.
 
 Package management was made using [Yarn](https://yarnpkg.com/).
 
