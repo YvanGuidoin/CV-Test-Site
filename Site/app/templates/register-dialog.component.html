@@ -3,7 +3,7 @@
     <table style="width: 100%">
       <tr>
         <md-input-container>
-          <input md-input required [(ngModel)]="data.username" name="username" placeholder="Username" #username="ngModel">
+          <input mdInput required [(ngModel)]="data.username" name="username" placeholder="Username" #username="ngModel">
           <md-hint *ngIf="usernameTaken">
             Username is already taken
           </md-hint>
@@ -14,7 +14,7 @@
       </tr>
       <tr>
         <md-input-container>
-          <input md-input required [(ngModel)]="passwordDouble" name="password" type="password" placeholder="Password" #password="ngModel">
+          <input mdInput required [(ngModel)]="passwordDouble" name="password" type="password" placeholder="Password" #password="ngModel">
           <md-hint *ngIf="!password.valid">
             Password is required
           </md-hint>
@@ -22,7 +22,7 @@
       </tr>
       <tr>
         <md-input-container>
-          <input md-input required [(ngModel)]="data.password" name="password" type="password" placeholder="Repeat password" #passwordReal="ngModel">
+          <input mdInput required [(ngModel)]="data.password" name="password" type="password" placeholder="Repeat password" #passwordReal="ngModel">
           <md-hint *ngIf="!passwordReal.valid || data.password != passwordDouble">
             Password should be the same in the two fields
           </md-hint>

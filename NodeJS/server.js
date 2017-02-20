@@ -12,17 +12,6 @@ var app = express();
 // middleware to test authentication
 var myAuthenticate = function(req, res, next) {
     if(!req.body.username || !req.body.password) res.sendStatus(401);
-<<<<<<< HEAD:NodeJS/code/server.js
-    const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
-    client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
-      if(err) res.sendStatus(500);
-      else if(!result) res.sendStatus(403);
-      else if(result.rows[0].password == req.body.password){
-        next();
-      }
-      else res.sendStatus(403);
-    });
-=======
     else {
       const query = 'SELECT userid, pseudo, password FROM users WHERE pseudo=?';
       client.execute(query, [ req.body.username ], { prepare: true }, function(err, result){
@@ -34,7 +23,6 @@ var myAuthenticate = function(req, res, next) {
         else res.sendStatus(403);
       });
     }
->>>>>>> 9d292825eac17951eb2cf9fd65c7701f714ac516:NodeJS/server.js
 };
 
 app.use(function(req, res, next) {
@@ -123,16 +111,11 @@ app.post('/users/delete/:id', jsonParser, myAuthenticate, function(req, res) {
 app.get('/users/:id', function(req, res) {
     const query = 'SELECT userid, name, surname, birthdate, gender, address, presentation, past_jobs, qualifications, keywords FROM users WHERE userid=?';
     client.execute(query, [ req.params.id ], { prepare: true }, function(err, result) {
-<<<<<<< HEAD:NodeJS/code/server.js
-      if(err) console.log(err);
-      else if(result){
-=======
       if(err){
         console.log(err);
         res.sendStatus(500);
       }
-      if(result){
->>>>>>> 9d292825eac17951eb2cf9fd65c7701f714ac516:NodeJS/server.js
+      else if(result){
         if(result.rows[0]) res.json(result.rows[0]);
       }
     });

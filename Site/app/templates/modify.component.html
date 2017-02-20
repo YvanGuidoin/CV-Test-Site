@@ -3,23 +3,23 @@
     <form>
       <md-card-content>
         <md-input-container>
-          <input md-input required [(ngModel)]="resume.name" name="name" placeholder="Name">
+          <input mdInput required [(ngModel)]="resume.name" name="name" placeholder="Name">
         </md-input-container>
         <md-input-container>
-          <input md-input required [(ngModel)]="resume.surname" name="surname" placeholder="Surname">
+          <input mdInput required [(ngModel)]="resume.surname" name="surname" placeholder="Surname">
         </md-input-container>
         <md-input-container>
-          <input md-input type="date" required [(ngModel)]="resume.birthdate" name="birthdate" placeholder="Birthday">
+          <input mdInput type="date" required [(ngModel)]="resume.birthdate" name="birthdate" placeholder="Birthday">
         </md-input-container>
         <md-select required [(ngModel)]="resume.gender" name="birthdate" placeholder="Gender">
           <md-option *ngFor="let gender of genders" [value]="gender.value">{{gender.title}}</md-option>
         </md-select>
         <md-input-container>
-          <textarea md-input required [(ngModel)]="resume.address" name="address" placeholder="Address">
+          <textarea mdInput required [(ngModel)]="resume.address" name="address" placeholder="Address">
           </textarea>
         </md-input-container>
         <md-input-container>
-          <textarea md-input required [(ngModel)]="resume.presentation" name="presentation" placeholder="Presentation" html-text>
+          <textarea mdInput required [(ngModel)]="resume.presentation" name="presentation" placeholder="Presentation" html-text>
           </textarea>
         </md-input-container>
 
@@ -27,19 +27,19 @@
         <job [job]="job" [removable]="true" (delete)="deleteJob($event)" *ngFor="let job of resume.past_jobs"></job>
         <br/>
         <md-input-container>
-          <input md-input type="date" [(ngModel)]="newJob.beginning" name="beginning" placeholder="Beginning">
+          <input mdInput type="date" [(ngModel)]="newJob.beginning" name="beginning" placeholder="Beginning">
         </md-input-container>
         <md-input-container>
-          <input md-input type="date" [(ngModel)]="newJob.end" name="end" placeholder="End">
+          <input mdInput type="date" [(ngModel)]="newJob.end" name="end" placeholder="End">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newJob.company" name="company" placeholder="Company">
+          <input mdInput [(ngModel)]="newJob.company" name="company" placeholder="Company">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newJob.job" name="job" placeholder="Job">
+          <input mdInput [(ngModel)]="newJob.job" name="job" placeholder="Job">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newJob.description" name="description" placeholder="Description">
+          <input mdInput [(ngModel)]="newJob.description" name="description" placeholder="Description">
         </md-input-container>
         <button md-button (click)="addNewJob()">Add</button>
 
@@ -47,19 +47,19 @@
         <qualif [qualif]="qualif" [removable]="true" (delete)="deleteQualif($event)" *ngFor="let qualif of resume.qualifications"></qualif>
         <br/>
         <md-input-container>
-          <input md-input type="date" [(ngModel)]="newQualif.obtention" name="obtention" placeholder="Obtention">
+          <input mdInput type="date" [(ngModel)]="newQualif.obtention" name="obtention" placeholder="Obtention">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newQualif.name" name="name" placeholder="Name">
+          <input mdInput [(ngModel)]="newQualif.name" name="name" placeholder="Name">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newQualif.location" name="location" placeholder="Location">
+          <input mdInput [(ngModel)]="newQualif.location" name="location" placeholder="Location">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newQualif.organization" name="organization" placeholder="Organization">
+          <input mdInput [(ngModel)]="newQualif.organization" name="organization" placeholder="Organization">
         </md-input-container>
         <md-input-container>
-          <input md-input [(ngModel)]="newQualif.description" name="description" placeholder="Description">
+          <input mdInput [(ngModel)]="newQualif.description" name="description" placeholder="Description">
         </md-input-container>
         <button md-button (click)="addNewQualif()">Add</button>
 
