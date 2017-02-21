@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     cache: true,
-    devtool: 'eval',
+    devtool: 'cheap-module-source-map',
     entry: {
         main: './app/main.ts'
     },
@@ -59,18 +59,7 @@ module.exports = {
             mangle: true,
             comments: false,
             compress: {
-                unused: true,
-                dead_code: true,
-                warnings: false,
-                pure_getters: true,
-                drop_debugger: true,
-                conditionals: true,
-                evaluate: true,
-                drop_console: true,
-                sequences: true,
-                unsafe: true,
-                unsafe_comps: true,
-                booleans: true
+                warnings: false
             },
             output: {
                 comments: false,
