@@ -51,6 +51,7 @@ const routes : Routes = [
 @NgModule({
   imports:      [
                   BrowserModule,
+                  FlexLayoutModule,
                   FormsModule,
                   MaterialModule.forRoot(),
                   RouterModule.forRoot(routes, {useHash: true})

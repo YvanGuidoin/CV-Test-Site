@@ -5,7 +5,7 @@ import { Resume } from './resume';
 import { ResumeService } from './resume.service';
 
 @Component({
-  selector: 'base',
+  selector: 'base-app',
   templateUrl : '../templates/base.component.html'
 })
 export class BaseComponent implements OnInit {

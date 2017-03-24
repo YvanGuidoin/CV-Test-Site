@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     cache: true,
-    devtool: 'cheap-module-source-map',
+    devtool: 'eval',
     entry: {
         main: './app/main.ts'
     },
