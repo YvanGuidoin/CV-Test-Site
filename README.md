@@ -1,4 +1,4 @@
-# THIS IS A WIP, SOME THINGS MIGHT NOT BE WORKING AS INTENDED, IT'S NORMAL
+# Project inactive
 
 # CV Site example
 
